@@ -4,19 +4,16 @@
         As a professor cadastrado na plataforma
         I want do criar, remover, editar, listar e buscar questões existentes
         So that eu poderei assim apresenta-las em paginas web mostrando seu conteúdo
-
     Scenario: nova questão argumentativa
         Given o professor "Alberto" logado no sistema
         And estando na tela das questões argumentativas
         When  eu crio uma questão argumentativa com enunciado "quem foi Rômulo e remulo"
         Then  salve no sistema a nova questão argumentativa criada
-		
 	Scenario: remover questão argumentativa existente
         Given o professor "Alberto" logado no sistema
         And a questão está presente no sistema
         When  eu deleto a questão com descrição "quem foi Rômulo e remulo"
         Then  remova a questão com descrição "quem foi Romulo e remulo"
-
     Scenario: editar questão argumentativa existente
         Given o professor "Alberto" logado no sistema
         And a questão está presente no sistema
