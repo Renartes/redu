@@ -2,49 +2,49 @@
 
 #Controle
 
-Feature: Respostas das Quest√µes Argumentativas
-    As a usu√°rio esteja logado no sistema
-    I want listar e adicionar respostas e  listar quest√µes
-    So that possa responder e analisar as quest√µes dissertativas
+Feature: Respostas das Questıes Argumentativas
+    As a usu·rio esteja logado no sistema
+    I want listar e adicionar respostas e  listar questıes
+    So that possa responder e analisar as questıes dissertativas
   
-Scenario: listar quest√µes respondidas 
-    Given que o sistema tenha a quest√£o respondida "Fa√ßa um cen√°rio"
-    And o usu√°rio esteja logado como aluno
-    When ele ver a sua lista de quest√µes 
-    Then a lista ir√° conter "Fa√ßa um cen√°rio"
+Scenario: listar questıes respondidas 
+    Given que o sistema tenha a quest„o respondida "FaÁa um cen·rio"
+    And o usu·rio esteja logado como aluno
+    When ele ver a sua lista de questıes 
+    Then a lista ir· conter "FaÁa um cen·rio"
 
-Scenario: listar questoes que n√£o foram respondidas  
-    Given que o sistema tenha a quest√£o n√£o respondida "Fa√ßa uma feature"
-    And o usu√°rio esteja logado como aluno
-    When ele ver a sua lista de quest√µes 
-    Then a lista ir√° conter "Fa√ßa uma feature"
+Scenario: listar questıes que n„o foram respondidas  
+    Given que o sistema tenha a questıes n„o respondida "FaÁa uma feature"
+    And o usu·rio esteja logado como aluno
+    When ele ver a sua lista de questıes 
+    Then a lista ir· conter "FaÁa uma feature"
 
 Scenario: responder logado como professor
-    Given que as quest√µes s√≥ podem ser respondidas pelos alunos
+    Given que as questıes sÛ podem ser respondidas pelos alunos
     And o professor esteja logado
-    When estiver na p√°gina de quest√µes dissertativas
-    Then n√£o ir√° aparecer as quest√µes para serem respondidas
+    When estiver na p·gina de questıes dissertativas
+    Then n„o ir„o aparecer as questıes para serem respondidas
 
 #GUI
 
 Scenario: aparecer questoes para responder 
     Given que esteja logado como aluno
-    And esteja no menu de quest√µes dissertativas
-    And a questao "Criar um feature" n√£o foi respondida
-    Then a quest√£o "Criar um feature" ir√° aparecer na tela
+    And esteja no menu de questıes dissertativas
+    And a quest„o "Criar um feature" n„o foi respondida
+    Then a quest„o "Criar um feature" ir· aparecer na tela
 
-Scenario: listar questoes respondidas  
+Scenario: listar questıes respondidas  
     Given que o aluno esteja logado
-    And o sistema contenha a quest√£o respondida "Como criar seu GitHub"
-    And esteja no menu de quest√µes dissertativas
-    When selecionar a aba de quest√µes respondidas
-    Then a lista ir√° conter "Como criar seu GitHub"
+    And o sistema contenha a quest„o respondida "Como criar seu GitHub"
+    And esteja no menu de questıes dissertativas
+    When selecionar a aba de questıes respondidas
+    Then a lista ir· conter "Como criar seu GitHub"
 
 Scenario: listar respostas dos alunos
     Given que o professor esteja logado
-    And esteja no menu de quest√µes dissertativas
-    And seleciona a aba de quest√µes respondidas
-    When seleciona a op√ß√£o de ver as respostas dos alunos
+    And esteja no menu de questıes dissertativas
+    And seleciona a aba de questıes respondidas
+    When seleciona a opÁ„o de ver as respostas dos alunos
     Then a lista contem todas as respostas dos alunos
 
 #Controle
