@@ -49,35 +49,36 @@ Scenario: listar respostas dos alunos
 
 #Controle
 Scenario: adicionar uma resposta 
-Given que o aluno esteja logado no sistema
-And tenha questões dissertativas para serem respondidas 
-When ele adicionar uma resposta para a questão
-Then a resposta será salva no sistema 
+	Given que o aluno esteja logado no sistema
+	And tenha questões dissertativas para serem respondidas 
+	When ele adicionar uma resposta para a questão
+	Then a resposta será salva no sistema 
 
 Scenario: listar respostas dos alunos
-Given que o professor esteja logado no sistema 
-And a questão "O que é Branch ?" já foi respondida 
-When professor vizualizar a lista 
-Then irá conter na lista a resposta da questão "O que é Branch?"
+	Given que o professor esteja logado no sistema 
+	And a questão "O que é Branch ?" já foi respondida 
+	When professor vizualizar a lista 
+	Then irá conter na lista a resposta da questão "O que é 	Branch?"
 #GUI
 Scenario: responder questões
-Given aluno esteja logado no sistema
-And esteja na aba de questões não respondidas
-When o aluno preencher a resposta da questão 
-And selecionar o botão de enviar 
-Then a resposta será armazendada no sistema
+	Given aluno esteja logado no sistema
+	And esteja na aba de questões não respondidas
+	When o aluno preencher a resposta da questão 
+	And selecionar o botão de enviar 
+	Then a resposta será armazendada no sistema
 
 Scenario: listar questões não respondidas 
-Given aluno esteja logado no sistema
-And está no menu de questões dissertativas
-When ele seleciona a aba de questões não respondidas
-Then verá a lista de todas as questões não respondidas
+	Given aluno esteja logado no sistema
+	And está no menu de questões dissertativas
+	When ele seleciona a aba de questões não respondidas
+	Then verá a lista de todas as questões não respondidas
+
 #Erro
 Scerario: enviar resposta em branco 
-Given aluno respondeu uma questão
-And deixa todo o campo de resposta em branco 
-When aluno tenta enviar questão
-Then questão não será salva no sistema
+	Given aluno respondeu uma questão
+	And deixa todo o campo de resposta em branco 
+	When aluno tenta enviar questão
+	Then questão não será salva no sistema
 
 
    
