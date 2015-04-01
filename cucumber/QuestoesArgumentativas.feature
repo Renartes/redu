@@ -1,4 +1,4 @@
-@i9n
+﻿@i9n
 
     #Controle
     Feature: Questões argumentativas
@@ -32,9 +32,35 @@
         Then  a lista de questões argumentativas contem a questão "Quem foi romulo e remulo?" existe no sistema
 
     #GUI
-    Scenario : nova questão argumentativa web
+    Scenario: nova questão argumentativa web
         Given que esteja no menu de questões
         When o professor seleciona a opção "Questão argumentativa" no menu de questões
         And eu selecionar a nova questão argumentativa na página de questões
         Then eu posso preencher os detalhes do questão de artigos
+
+    #Erro
+    Scenario: Questão com mesmo enunciado
+       
+        Given o professor "Adalberto" estiver logado no sistema redu
+        And ter escrito o enunciado de uma questão para prova de "Anatomia" igual a outra da mesma prova
+        When "Adalberto" tentar enviar a prova
+        Then emita uma mensagem de erro "existe uma questão igual a outra em sua prova"
+	
+    Scenario: Upload de imagem de baixa qualidade                         
+       
+        Given o professor "Scoob" logado no sistema redu
+        And fazer o upload de uma foto para uma questão da prova "Biologia Parte I"
+        And o tamanho da foto for menor que o tamanho "5"
+        When "Scoob" clicar em salvar
+        Then emita uma mensagem de erro "o tamanho mínimo de um arquivo de foto é 5 kbs"
+	
+    Scenario: Questão sem enunciado
+       
+        Given o professor "Alberto" logado no sistema
+	And na tela de criação de provas
+        And deixar o questionário da prova vazio
+        When "Alberto" for salvar a prova
+        Then emita uma mensagem de erro "digite alguma questão/conteúdo para sua prova"
+
+
 
