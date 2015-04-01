@@ -63,21 +63,8 @@
 	Then boqueia o acesso de todos os usuários cadastrados naquele curso
 	And notifica todos os usuários cadastrados naquele curso sobre a modificação da assinatura
 
-	Scenario: opção de tornar um curso com “Assinatura Mensal” para “Assinatura Gratuita” apenas para usuários específicos
-	Given eu estou nas configurações de assinatura do curso
-	When eu seleciono a opção “Adiconar Bolsistas”
-	And seleciono os alunos bolsistas
-	Then os alunos selecionados terão “Assinatura Gratuita”
-
 	Scenario: opção de tornar o curso com “Assinatura Mensal” para “Assinatura Gratuita” para todos os usuários cadastrados no curso
 	Given eu estou nas configurações de assinatura do curso
 	When eu seleciono a opção "Adicionar Bolsistas"
 	And seleciono a opção "Selecionar todos os alunos"
 	Then todos os alunos matriculados no curso agora possuem uma "Assinatura Gratuita" no mesmo
-
-	Scenario: criar “Promoção” por um período de tempo
-	Given eu estou nas configurações de assinatura curso
-	When eu seleciono a opção “Promoção”
-	And eu preencho o tempo da promoção
-	And a porcentagem da promoção
-	Then o curso fica com desconto na sua assinatura
