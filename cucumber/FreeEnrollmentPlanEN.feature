@@ -5,6 +5,8 @@
 	I want to set free the access to some courses
 	So that users get access to the course content freely
 
+	# === CONTROLLER ===
+
 	Scenario: configurating the paying mode
 	Given I'm creating a new course
 	And I'm choosing the subscription price
@@ -40,11 +42,13 @@
 	Then a notification is sent to every subscriber to let him know about the change
 
 	
-	Scenario: Informing usser who subscribed to a free course that it turned to payable
+	Scenario: Informing user who subscribed to a free course that it turned to payable
 	Given a course subscription mode is free
 	When the subscription mode changes to payable
 	Then the access of every subscriber is blocked
 	And a notification is sent to let them know about the change
+
+	# === GUI ===
 
 	Scenario: opção de tornar o curso com “Assinatura Mensal” para “Assinatura Gratuita” para todos os usuários cadastrados no curso
 	Given eu estou nas configurações de assinatura do curso
