@@ -9,7 +9,7 @@
 	Given estou cadastrando um novo curso 
 	And estou na fase de escolha do valor da assinatura
 	When eu escolho a opção “Gratuito”
-	Then os usuários podem fazer a assinatura do curso sem efetuar o pagamento.
+	Then a opção de pagamento do curso é salva como “Gratuito”
 
 	Scenario: cadastro de um curso com preço zero
 	Given estou cadastrando um novo curso 
@@ -17,24 +17,6 @@
 	And eu escolho a opção “Assinatura mensal”
 	When eu digito o preço como zero
 	Then a opção de pagamento do curso é salva como “Gratuito”
-
-	Scenario: cadastro de um curso com opção de pagamento “Gratuito”
-	Given estou cadastrando um novo curso 
-	And estou na fase de escolha do valor da assinatura
-	When eu escolho a opção “Assinatura mensal”
-	Then um campo para informar o preço é exibido
-
-	Scenario: cadastro de um curso com opção de pagamento “Assinatura Mensal”
-	Given estou cadastrando um novo curso 
-	And estou na fase de escolha do valor da assinatura
-	When eu escolho a opção “Gratuito”
-	Then o campo para informar o preço é escondido
-
-	Scenario: Tentou criar curso sem definir tipo de assinatura
-	Given estou cadastrando um novo curso
-	And estou na fase de escolha da assinatura
-	When eu tento avançar na criação do curso sem escolher a assinatura
-	Then aparece uma mensagem de erro “Para avançar, é necessário escolher uma opção de assinatura para este curso”
 
 	Scenario: Modificar assinatura de um curso que possui “Assinatura Mensal” para “Assinatura Gratuita”
 	Given estou na página de configurações da assinatura de um curso
@@ -59,7 +41,8 @@
 
 	
 	Scenario: Avisa aos usuários cadastrados em um curso que possui “Assinatura Gratuita”, que seu curso agora possui uma “Assinatura Mensal”
-	Given que um curso teve sua assinatura modificada para “Mensal”
+	Given que um curso tem assinatura gratuita
+	When o curso é alterado para assinatura mensual
 	Then boqueia o acesso de todos os usuários cadastrados naquele curso
 	And notifica todos os usuários cadastrados naquele curso sobre a modificação da assinatura
 
@@ -68,3 +51,21 @@
 	When eu seleciono a opção "Adicionar Bolsistas"
 	And seleciono a opção "Selecionar todos os alunos"
 	Then todos os alunos matriculados no curso agora possuem uma "Assinatura Gratuita" no mesmo
+
+	Scenario: cadastro de um curso com opção de pagamento “Gratuito”
+	Given estou cadastrando um novo curso 
+	And estou na fase de escolha do valor da assinatura
+	When eu escolho a opção “Assinatura mensal”
+	Then um campo para informar o preço é exibido
+
+	Scenario: cadastro de um curso com opção de pagamento “Assinatura Mensal”
+	Given estou cadastrando um novo curso 
+	And estou na fase de escolha do valor da assinatura
+	When eu escolho a opção “Gratuito”
+	Then o campo para informar o preço é escondido
+
+	Scenario: Tentou criar curso sem definir tipo de assinatura
+	Given estou cadastrando um novo curso
+	And estou na fase de escolha da assinatura
+	When eu tento avançar na criação do curso sem escolher a assinatura
+	Then aparece uma mensagem de erro “Para avançar, é necessário escolher uma opção de assinatura para este curso”
