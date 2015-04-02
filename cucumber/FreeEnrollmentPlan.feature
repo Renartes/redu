@@ -5,6 +5,8 @@
 	I want to disponibilizar cursos de forma gratuita
 	So that os usuários podem consumir conteúdo sem custo o conteúdo do curso
 
+	# === CONTROLLER ===
+
 	Scenario: configuração do modo de pagamento do curso
 	Given estou cadastrando um novo curso 
 	And estou na fase de escolha do valor da assinatura
@@ -47,10 +49,13 @@
 	And notifica todos os usuários cadastrados naquele curso sobre a modificação da assinatura
 
 	Scenario: opção de tornar o curso com “Assinatura Mensal” para “Assinatura Gratuita” para todos os usuários cadastrados no curso
+	# See my comment in the english version
 	Given eu estou nas configurações de assinatura do curso
 	When eu seleciono a opção "Adicionar Bolsistas"
 	And seleciono a opção "Selecionar todos os alunos"
 	Then todos os alunos matriculados no curso agora possuem uma "Assinatura Gratuita" no mesmo
+
+	# === GUI ===
 
 	Scenario: cadastro de um curso com opção de pagamento “Gratuito”
 	Given estou cadastrando um novo curso 
@@ -69,3 +74,10 @@
 	And estou na fase de escolha da assinatura
 	When eu tento avançar na criação do curso sem escolher a assinatura
 	Then aparece uma mensagem de erro “Para avançar, é necessário escolher uma opção de assinatura para este curso”
+
+	Scenario: mudança de assinatura
+	Given estou na pagina de configuraçao do curso
+	And estou trocando a opçao de assinatura
+	When eu confirmo o troco
+	Then uma notificaçao confirma o troco
+	# not sure about how to write this haha

@@ -5,6 +5,8 @@
 	I want to assinar um curso gratuito
 	So that eu posso consumir sem custo o conteúdo do curso
 
+	# === CONTROLLER ===
+
 	Scenario: assinatura de um curso
 	Given estou me cadastrando em um curso
 	And o curso selecionado foi cadastrado como “Gratuito”
@@ -35,3 +37,17 @@
 	When meu pagamento é confirmado
 	Then minha inscrição nesse curso é desbloqueada
 
+	# === GUI ===
+
+	# Chilling grammar, YOLO 
+
+	Scenario: cadastrando num curso gratuito
+	Given estou cadastrando num curso gratuito
+	When eu confirmo o cadastro
+	Then o cadastro e diretamente aprovado, sem pasar por uma interface de pagamento
+
+	Scenario: mudança na configuraçao de assinatura, de gratuita ate mensual
+	Given Eu cadastrei num curso que estava gratuito
+	And a configuraçao da assinatura foi trocada para assinatura mensual
+	When quero acessar ao conteudo do curso
+	Then uma interface aparece e tenho a escolha de pagar o cancelar a inscriçao

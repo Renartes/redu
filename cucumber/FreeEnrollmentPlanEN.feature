@@ -7,13 +7,13 @@
 
 	# === CONTROLLER ===
 
-	Scenario: configurating the paying mode
+	Scenario: creating a free course
 	Given I'm creating a new course
 	And I'm choosing the subscription price
 	When I choose the free option
 	Then the course is saved as free
 
-	Scenario: setting the price of a course as zero
+	Scenario: creating a course with price zero
 	Given I'm creating a new course
 	And I'm choosing the subscription price
 	And I choose the mensual subscription
