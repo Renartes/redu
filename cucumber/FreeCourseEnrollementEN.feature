@@ -21,7 +21,6 @@
 	And the course configuration is changed into mensual subscription
 	Then my subscription is blocked
 
-
 	Scenario: cancel subscription to an initially free course
 	Given I've subscrided to a course which configuration was initially free
 	And settings are changed into mensual subscription
