@@ -48,25 +48,31 @@
 	Then the access of every subscriber is blocked
 	And a notification is sent to let them know about the change
 
-	# === GUI ===
-
 	Scenario: opção de tornar o curso com “Assinatura Mensal” para “Assinatura Gratuita” para todos os usuários cadastrados no curso
+	# maybe we should develop a bit this part : is there student bolsistas in the current system ? 
+	# if yes, maybe we should give more flexibility to the system, the option to choose which student won't pay
+	# even if at first we don't have enough time to implement it ;)
+	# As I'm a lazy man, I let you implement that dudes haha
 	Given eu estou nas configurações de assinatura do curso
 	When eu seleciono a opção "Adicionar Bolsistas"
 	And seleciono a opção "Selecionar todos os alunos"
 	Then todos os alunos matriculados no curso agora possuem uma "Assinatura Gratuita" no mesmo
 
-	Scenario: cadastro de um curso com opção de pagamento “Gratuito”
-	Given estou cadastrando um novo curso 
-	And estou na fase de escolha do valor da assinatura
-	When eu escolho a opção “Assinatura mensal”
-	Then um campo para informar o preço é exibido
 
-	Scenario: cadastro de um curso com opção de pagamento “Assinatura Mensal”
-	Given estou cadastrando um novo curso 
-	And estou na fase de escolha do valor da assinatura
-	When eu escolho a opção “Gratuito”
-	Then o campo para informar o preço é escondido
+	# === GUI ===
+
+
+	Scenario: creating a payable course
+	Given I'm creating a new payable course
+	And I'm at the pricing step
+	When I choose the payable subscription option
+	Then the price field is displayed
+
+	Scenario: creating a free course
+	Given I'm creating a new free course 
+	And I'm at the pricing step
+	When I choose the free subscription option
+	Then the price field is hidden
 
 	Scenario: I'm trying to create a course without filling the course price field
 	Given I'm creating a new course
@@ -74,4 +80,8 @@
 	When I try to go to the next step without filling the price field
 	Then an error message is raised : to continue, you need to inform the price of this course
 
-
+	Scenario: changing the subscription mode
+	Given I'm in the configuration page of a course
+	And I'm changing its subscription mode
+	When I confirm the change
+	Then a change notification appears, informing about the new subscription mode
