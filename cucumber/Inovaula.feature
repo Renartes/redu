@@ -48,4 +48,31 @@ Feature: Integration with Inovaula
     When eu clico na opção “Conteúdos auxiliares”
     Then Uma nova guia é aberta no navegador
     And sou direcionado a pagina de conteúdos do inovaula relacionados a disciplina.
+	
+ Scenario:	Clicar na opcão "Sugestão"
+	Given I Am a "Student"
+	When I Am logged in Redu as a "Student"
+	And I click on the tab "Random contents"
+	Then I go to a page with a random redu's article.
+	
+ Scenario: Unlink accounts
+	Given I am a "Teacher" with an account on Inovaula
+    And I am logged in Redu as a "Teacher"
+	When I click in Menu "Settings"
+    And I can choose the option "Unlink accounts"
+	Then the the accounts can be unlinked
+	
+Scenario: View the historic
+	Given I am a "Student" with an account on Inovaula
+	And I am logged in my account
+	When I select the option "Historic" on my menu
+	Then I have access on my searches historic
+	
+Scenario:  My favorites 
+	Given I am a "Student" with an account on Inovaula
+	And I am logged in my account
+	When I select the option "Favorite" on my menu
+	Then I have access on my favorites contents on Inovaula from the most searched to the less
+	
+ 
 
