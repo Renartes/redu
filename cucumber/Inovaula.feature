@@ -24,28 +24,52 @@ Feature: Integration with Inovaula
     Given that exists a "Teacher" with material on the subject on Inovaula
     Then I should be able to fire a class planning notification to a "Teacher"
   
- Scenario: Editar link presente em uma disciplina no OpenRedu que redireciona para conteúdos do inovaula
-    Given Estou logado como “administrador” da disciplina  
-    And Estou na pagina de “configurações” da disciplina
-    And Desejo editar um link ao conteúdo “Grandezas e Unidades”
-    When seleciono a opção “Editar” no menu
-    Then se torna possúvel alterar o link que direciona aos conteúdos do Inovaula.
+ Scenario: Editar link presente em uma disciplina no OpenRedu que redireciona para conteÃºdos do inovaula
+    Given Estou logado como â€œadministradorâ€ da disciplina  
+    And Estou na pagina de â€œconfiguraÃ§Ãµesâ€ da disciplina
+    And Desejo editar um link ao conteÃºdo â€œGrandezas e Unidadesâ€
+    When seleciono a opÃ§Ã£o â€œEditarâ€ no menu
+    Then se torna possÃºvel alterar o link que direciona aos conteÃºdos do Inovaula.
   
-  Scenario: Remover link presente em uma disciplina no OpenRedu que redireciona para conteúdos do inovaula.
-    Given Estou logado como “administrador” da disciplina  
-    And Estou na pagina de “configurações” da disciplina
-    When seleciono a opção “Remover” no menu, será exibida uma janela de confirmação de exclusão
+  Scenario: Remover link presente em uma disciplina no OpenRedu que redireciona para conteÃºdos do inovaula.
+    Given Estou logado como â€œadministradorâ€ da disciplina  
+    And Estou na pagina de â€œconfiguraÃ§Ãµesâ€ da disciplina
+    When seleciono a opÃ§Ã£o â€œRemoverâ€ no menu, serÃ¡ exibida uma janela de confirmaÃ§Ã£o de exclusÃ£o
     And quando clico em confirmar
-    Then o link será removido da disciplina.
+    Then o link serÃ¡ removido da disciplina.
   
-  Scenario:  Remoção de links sem estar logado como administrador da disciplina
-    Given Eu não estou logado como “Administrador”
-    When Tento acessar pagina de configurações da disciplina no OpenRedu
-    Then será exibida uma mensagem de erro “Você não tem as permissões necessárias para realizar esta ação”
+  Scenario:  RemoÃ§Ã£o de links sem estar logado como administrador da disciplina
+    Given Eu nÃ£o estou logado como â€œAdministradorâ€
+    When Tento acessar pagina de configuraÃ§Ãµes da disciplina no OpenRedu
+    Then serÃ¡ exibida uma mensagem de erro â€œVocÃª nÃ£o tem as permissÃµes necessÃ¡rias para realizar esta aÃ§Ã£oâ€
   
-  Scenario:  Clicar na opção “Conteúdos”
-    Given  Estou na pagina da disciplina “Grandezas e Unidades”
-    When eu clico na opção “Conteúdos auxiliares”
-    Then Uma nova guia é aberta no navegador
-    And sou direcionado a pagina de conteúdos do inovaula relacionados a disciplina.
-
+  Scenario:  Clicar na opÃ§Ã£o â€œConteÃºdosâ€
+    Given  Estou na pagina da disciplina â€œGrandezas e Unidadesâ€
+    When eu clico na opÃ§Ã£o â€œConteÃºdos auxiliaresâ€
+    Then Uma nova guia Ã© aberta no navegador
+    And sou direcionado a pagina de conteÃºdos do inovaula relacionados a disciplina.
+	
+ Scenario:	Clicar na opcÃ£o "SugestÃ£o"
+	Given I Am a "Student"
+	When I Am logged in Redu as a "Student"
+	And I click on the tab "Random contents"
+	Then I go to a page with a random redu's article.
+	
+ Scenario: Unlink accounts
+	Given I am a "Teacher" with an account on Inovaula
+    And I am logged in Redu as a "Teacher"
+	When I click in Menu "Settings"
+    And I can choose the option "Unlink accounts"
+	Then the the accounts can be unlinked
+	
+Scenario: View the historic
+	Given I am a "Student" with an account on Inovaula
+	And I am logged in my account
+	When I select the option "Historic" on my menu
+	Then I have access on my searches historic
+	
+Scenario:  My favorites 
+	Given I am a "Student" with an account on Inovaula
+	And I am logged in my account
+	When I select the option "Favorite" on my menu
+	Then I have access on my favorites contents on Inovaula from the most searched to the less
